@@ -32,7 +32,7 @@ class GmailUserShoppingParser:
         sender = [meta['value'] for meta in metadata if meta['name'] == 'From'][0]
         subject = [meta['value'] for meta in metadata if meta['name'] == 'Subject'][0]
 
-        return any([sender.find(marketplace) != -1
+        return any([sender.find(marketplace) != -1 and subject.find('order') != -1
                     for marketplace in self.marketplaces])
 
     @staticmethod
